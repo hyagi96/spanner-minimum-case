@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 SQLAlchemy = "*"
-python-dotenv = "0.1.dev0" # "*"
+python-dotenv = "*"
 sqlalchemy-spanner = "*"
 
 [dev-packages]
