@@ -38,6 +38,7 @@ Launching subshell in virtual environment...
 ❯ cp .env.example .env
 ❯ vi .env  # edit .env file
 ❯ ./run.py  # Create
-2021-12-22 10:26:09.390573
+found column: None
+new column will be created: 2021-12-23 13:54:59.096004
 ❯ ./run.py &> result.log  # Update, and occur an error
 ```
