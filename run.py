@@ -33,20 +33,25 @@ class Table(Base):
 
 # engine, session
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
-maker = sessionmaker(bind=engine)
-session = maker()
+Session = sessionmaker(bind=engine)
 
 # Apply schema using the engine
 Base.metadata.create_all(engine)
 
 # Add a column or Update the existing one
-column = session.query(Table).first()
-if column:
-    column.timestamp = datetime.datetime.now()
-else:
-    column = Table(timestamp=datetime.datetime.now())
-print(column.timestamp)
-
-session.add(column)
-session.commit()
-session.close()
+session = Session()
+try:
+    column = session.query(Table).first()
+    print(f'found column: {column}')
+    if column:
+        old_timestamp = column.timestamp
+        column.timestamp = datetime.datetime.now()
+        print(f'existing column will be updated: {old_timestamp} -> {column.timestamp}')
+    else:
+        column = Table(timestamp=datetime.datetime.now())
+        print(f'new column will be created: {column.timestamp}')
+    session.add(column)
+    # session.delete(column)
+    session.commit()
+finally:
+    session.close()
