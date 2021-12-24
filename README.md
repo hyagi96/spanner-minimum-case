@@ -1,5 +1,7 @@
 # Spanner Minimum Case
 
+Edit: This is an error that occurs only when using google-cloud-spanner v3.12.0.
+
 ```sh
 ❯ git clone git@github.com:hyagi96/spanner-minimum-case.git
 Cloning into 'spanner-minimum-case'...
